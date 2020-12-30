@@ -1,19 +1,21 @@
-const chalk = require('chalk'); 
+const chalk = require('chalk');
 const moment = require('moment');
 const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json');
+
 var prefix = ayarlar.prefix;
 
+
 module.exports = client => {
-  console.log(`[${client.user.username}] İle Giriş Yapıldı`)
- setInterval(function() {
-}, 8000);
-client.user.setPresence({
-        game: {
-            name: `Lrows V12 Guard`,
-            type: 'WATCHING'  
-        },
-        status: 'online'
-    })
-    console.log(`Bot başarıyla aktif edildi.`);
-}
+  console.log(`${client.user.username} ismi ile giriş yapıldı!`);
+  client.user.setStatus("online");
+  //idle = boşta
+  //dnd = rahatsız etmeyin
+  //online = çevrimiçi
+  console.log(`                                                                                                                                                                     `)
+  client.user.setActivity(``, { type: "LISTENING"});
+  //LISTENING = DİNLİYOR
+  //WATCHING = İZLİYOR
+  //PLAYING = OYNUYOR 
+  console.log(`${client.user.username}: Şu an ` + client.channels.size + ` adet kanala, ` + client.guilds.size + ` adet sunucuya ve ` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ` kullanıcıya hizmet veriliyor!`);
+};
